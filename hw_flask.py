@@ -47,6 +47,8 @@ def stat():
     pet.append(request.args['pet'])
     teft.append(request.args['teft'])
     norm.append(request.args['norm'])
+    # with open("Data", w, encoding=utf8) as file:
+        
     # создание пай-чарта
     h = sorted(age)
     df = pd.DataFrame({'age': h})
