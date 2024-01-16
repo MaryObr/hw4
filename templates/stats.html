@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <div class="p-3 mb-2 bg-info text-$cyan-800">
+    <title>Статистика</title>
+            <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li>
+      <a class="page-link" href="anketa.html" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="main_fl.html" target="_blank"> Главная страница</a></li>
+    <li class="page-item"><a class="page-link" href="anketa.html" target="_blank">Анкета</a></li>
+    <li class="page-item active"><a class="page-link">Статистика</a></li>
+   <li class="page-item"><a class="page-link" href="#" aria-disabled="true">Next</a></li>
+
+  </ul>
+</nav>
+</head>
+<body>
+<div class="text-center">
+    <div class="p-4 mb-2 text-#123456 bg-info">
+        <p class="h1"><b>Статистика опроса</b></p>
+        <p>Опрос прошли {{count}} человек.</p>
+        <p>Возраст самого взрослого анкетируемого - {{max}} лет. Самого молодого - {{min}} года.</p>
+        <img src="static/age.jpg">
+        <p>Город, из которого больше всего проходили анкету - {{city}}.</p>
+        <br>
+        <p>Более популярный вариант ударения в слове "творог" - на {{tv}} слог</p>
+        <p>Более популярный вариант ударения в слове "перчит" - на {{od}} слог</p>
+        <p>Более популярный вариант ударения в слове "петля" - на {{pet}} слог</p>
+        <p>Более популярный вариант ударения в слове "тефтели" - на {{teft}} слог</p>
+        <p>Более популярный вариант ударения в слове "солит" - на {{norm}} слог</p>
+    </div>
+</div>
+</body>
+</html>
