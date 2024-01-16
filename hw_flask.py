@@ -53,7 +53,7 @@ def stat():
     plt.figure(figsize=(6, 6))
     df['age'].value_counts().plot(kind='pie')
     plt.title('Распределение анкетируемых по возрасту')
-    plt.savefig("static/age.jpg")
+    plt.savefig("/home/MaryObridko/mysite/flask/static/age.jpg")
     q = {}
     for i in place:
         if not q.get(i):
