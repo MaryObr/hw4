@@ -30,16 +30,18 @@ def stat():
     pet = request.args['pet']
     teft = request.args['teft']
     norm = request.args['norm']
-    with open("Data.txt", a+, encoding=utf8) as file:
+    with open("Data.txt", 'r+', encoding='utf8') as file:
         for i in (age, gender, tvo, od, pet, teft, norm, place):
             file.write(i)
+            file.write("\n")
         age = []
         p = file.readlines()
-        try for k in range(0, 100):
-                for i in range(k*8):
-                    age.append(p[i])
-        except List Index Out of Range:
-            break
+        p = "".join(p)
+        p = p.split("\n")
+        for k in range(0, 100):
+            i = k*8
+            if i+1 < len(p):
+                age.append(int(p[i]))
     # создание пай-чарта
     h = sorted(age)
     df = pd.DataFrame({'age': h})
@@ -50,11 +52,14 @@ def stat():
     # определение ударений
     q = {}
     place = []
-    with open("Data.txt", a+, encoding=utf8) as file:
+    with open("Data.txt", 'r+', encoding='utf8') as file:
         x = file.readlines()
-        for i in range(len(x)):
-            if (i % 7 == 0) and (x[i].isalpha()):
-                place.append(x[i)
+        x = "".join(x)
+        x = x.split("\n")
+        for k in range(0, 100):
+            i = 7 + (k * 8)
+            if i < len(x):
+                place.append(x[i])
     for i in place:
         if not q.get(i):
             q[i] = 1
@@ -67,10 +72,13 @@ def stat():
     tvo = []
     teft = []
     norm = []
-    with open("Data.txt", a+, encoding=utf8) as file:
+    with open("Data.txt", 'r+', encoding='utf8') as file:
         z = file.readlines()
-        for i in range(len(z)):
-            if (z[i].isnumeric()) & (z[i-1].isalpha()) & (z[i+1].isnumeric()):
+        z = "".join(z)
+        z = z.split("\n")
+        for k in range(0, 100):
+            i = 2 + (k*8)
+            if i+4 < len(z):
                 tvo.append(z[i])
                 od.append(z[i+1])
                 pet.append(z[i+2])
