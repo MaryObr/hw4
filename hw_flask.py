@@ -31,11 +31,11 @@ def info():
     pet = request.args['pet']
     teft = request.args['teft']
     norm = request.args['norm']
-    with open("Data.txt", 'a+', encoding='utf8') as file:
+    with open("/home/MaryObridko/mysite/flask/Data.txt", 'a+', encoding='utf8') as file:
         for i in (age, gender, tvo, od, pet, teft, norm, place):
             file.write(i)
             file.write("\n")
-    with open("Data.txt", 'r+', encoding='utf8') as file:
+    with open("/home/MaryObridko/mysite/flask/Data.txt", 'r+', encoding='utf8') as file:
         age = []
         p = file.readlines()
         p = "".join(p)
@@ -57,7 +57,7 @@ def info():
     # определение ударений
     q = {}
     place = []
-    with open("Data.txt", 'r+', encoding='utf8') as file:
+    with open("/home/MaryObridko/mysite/flask/Data.txt", 'r+', encoding='utf8') as file:
         x = file.readlines()
         x = "".join(x)
         x = x.split("\n")
