@@ -49,6 +49,8 @@ def stat():
                 age.append(int(p[i]))
     # создание пай-чарта
     h = sorted(age)
+    me = sum(h)/len(h)
+    me = round(me, 2)
     print(h)
     df = pd.DataFrame({'age': h})
     plt.figure(figsize=(6, 6))
@@ -97,7 +99,7 @@ def stat():
             slog.append("1")
         else:
             slog.append("безразлично какой")
-    return render_template("stats.html", count=len(tvo), max=h[-1], min=h[0],
+    return render_template("stats.html", count=len(tvo), max=h[-1], min=h[0], mean=me,
                            city=towns[-1], tv=slog[0], od=slog[1], pet=slog[2], teft=slog[3], norm=slog[4])
 
 
