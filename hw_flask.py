@@ -20,8 +20,8 @@ def process():
     return render_template('anketa.html')
 
 
-@app.route('/process')
-def stat():
+
+def info():
     age = request.args['age']
     place = request.args['place']
     gender = request.args['exampleRadios']
@@ -34,6 +34,11 @@ def stat():
         for i in (age, gender, tvo, od, pet, teft, norm, place):
             file.write(i)
             file.write("\n")
+    return
+
+@app.route('/process')
+def stat():
+    with open("Data.txt", 'r+', encoding='utf8') as file:
         age = []
         p = file.readlines()
         p = "".join(p)
@@ -44,6 +49,7 @@ def stat():
                 age.append(int(p[i]))
     # создание пай-чарта
     h = sorted(age)
+    print(h)
     df = pd.DataFrame({'age': h})
     plt.figure(figsize=(6, 6))
     df['age'].value_counts().plot(kind='pie')
