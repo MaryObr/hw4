@@ -21,6 +21,7 @@ def process():
 
 
 
+@app.route('/process')
 def info():
     age = request.args['age']
     place = request.args['place']
@@ -30,14 +31,10 @@ def info():
     pet = request.args['pet']
     teft = request.args['teft']
     norm = request.args['norm']
-    with open("Data.txt", 'r+', encoding='utf8') as file:
+    with open("Data.txt", 'a+', encoding='utf8') as file:
         for i in (age, gender, tvo, od, pet, teft, norm, place):
             file.write(i)
             file.write("\n")
-    return
-
-@app.route('/process')
-def stat():
     with open("Data.txt", 'r+', encoding='utf8') as file:
         age = []
         p = file.readlines()
@@ -46,17 +43,18 @@ def stat():
         for k in range(0, 100):
             i = k*8
             if i+1 < len(p):
+                print(age)
                 age.append(int(p[i]))
     # создание пай-чарта
     h = sorted(age)
     me = sum(h)/len(h)
-    me = round(me, 2)
-    print(h)
+    me = round(me,2)
     df = pd.DataFrame({'age': h})
     plt.figure(figsize=(6, 6))
     df['age'].value_counts().plot(kind='pie')
     plt.title('Распределение анкетируемых по возрасту')
-    plt.savefig("/home/MaryObridko/mysite/flask/static/age.jpg")
+    # plt.savefig("/home/MaryObridko/mysite/flask/static/age.jpg")
+    plt.savefig("static/age.jpg")
     # определение ударений
     q = {}
     place = []
