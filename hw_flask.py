@@ -53,8 +53,7 @@ def info():
     plt.figure(figsize=(6, 6))
     df['age'].value_counts().plot(kind='pie')
     plt.title('Распределение анкетируемых по возрасту')
-    # plt.savefig("/home/MaryObridko/mysite/flask/static/age.jpg")
-    plt.savefig("static/age.jpg")
+    plt.savefig("/home/MaryObridko/mysite/flask/static/age.jpg")
     # определение ударений
     q = {}
     place = []
