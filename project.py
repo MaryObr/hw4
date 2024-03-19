@@ -154,9 +154,7 @@ def stats():
     plt.figure(figsize=(6, 8))
     df['pril'].value_counts().plot(kind='pie')
     plt.title('Выбор всех анекдотов или только приличных')
-    # plt.savefig("/home/MaryObridko/mysite/flask/static/age.jpg")
-    plt.savefig("static/pril.jpg")
-    #проверь, нормально ли работает
+    plt.savefig("/home/MaryObridko/mysite/flask/static/pril.jpg")
     na = []
     for i in names:
         na.extend(i.split())
@@ -173,8 +171,7 @@ def stats():
     plt.title('5 самых популярных персонажей')
     plt.xlabel('Самые популярные персонажи')
     plt.ylabel('Количество запросов')
-    # plt.savefig("/home/MaryObridko/mysite/flask/static/age.jpg")
-    plt.savefig("static/leute.jpg")
+    plt.savefig("/home/MaryObridko/mysite/flask/static/leute.jpg")
     return render_template("Anek3.html", pop=leute[0], lox=leute[-1], ane=ann)
 
 
