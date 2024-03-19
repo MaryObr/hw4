@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <div class="p-3 mb-2 text-#D2691E" style="background-color:Orange;">
+    <title>Описание проекта</title>
+        <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item active"><a class="page-link"> Описание проекта</a></li>
+    <li class="page-item"><a class="page-link" href='/process'>Анекдоты</a></li>
+    <li class="page-item"><a class="page-link" href="/stat">Статистика</a></li>
+    <li class="page-item"><a class="page-link" href='/process'>Next</a></li>
+  </ul>
+</nav>
+</head>
+<body>
+
+<div class="text-center">
+    <div class="p-4 mb-2 text-#123456" style="background-color:Orange;">
+        <p class="h1">Хихи-хаха</p>
+        <p>Этот сайт позволяет каждому прочитать партию анекдотов про своего любимого персонажа.</p>
+        <div class="container">
+        <form action="/process" method="get">
+            <div class="custom-control custom-radio">
+        <label>Можете выбрать персонажей</label>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="P1" value="Прав">
+  <label class="form-check-label" for="P1">
+    Правители РФ/СССР
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="P2" value="нац">
+  <label class="form-check-label" for="P2">
+    Основные национальности
+  </label>
+</div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="P3" value="вова">
+  <label class="form-check-label" for="P3">
+    Вовочка
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="P4" value="блонд">
+  <label class="form-check-label" for="P4">
+    Блондинка
+  </label>
+</div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="P5" value="штир">
+  <label class="form-check-label" for="P5">
+    Штирлиц
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="P6" value="семья">
+  <label class="form-check-label" for="P6">
+    Члены семьи
+  </label>
+    </div>
+</div>
+        <label for="T2">Или написать персонажа самостоятельно:</label>
+        <input type="text" id="T2" rows="3" placeholder="Маша" name="T2"></textarea>
+<div class="form-check">
+    <label for="radio1"> Можете выбрать только приличные анекдоты, базово выдаются все</label>
+    <br>
+  <input class="form-check-input" type="radio" name="tvo" id="radio1" value="1">
+  <label class="form-check-label" for="radio1">
+    Только приличные варианты
+  </label>
+</div>
+            <button type="submit" class="btn">Отправка</button>
+        </form>
+        </div>        
+        <p>------------------------------------------------------------------------------------</p>
+        <ul id = "1" title="Источники анекдотов">
+            <li> <h5><a href="https://www.anekdot.ru/release/anekdot/day/2020-02-06/"> Анекдоты на каждый день, данные за 2019 год</a></h5>
+            <li> <h5><a href="https://avidreaders.ru/read-book/anekdoty-ot-nikulina.html?p=4">Великая книга великого Никулина</a></h5>
+            <li> <h5><a href="https://anekdoty.ru/">Сайт с тематическими анекдотами</a></h5>
+    </div>
+</div>
+    </div>
+</div>
+<img src="https://shutniks.com/wp-content/uploads/2020/04/prikolnye_anekdoty_5_11083622-1024x844.jpg" width="100%">
+</body>
+</html>
