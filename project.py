@@ -1,13 +1,13 @@
 import sqlite3
 import pandas as pd
-conn = sqlite3.connect("C:\\Users\\obrid\\Desktop\\Anekdotes\\anekdotes.db", check_same_thread=False)
+conn = sqlite3.connect("anekdotes.db", check_same_thread=False)
 c = conn.cursor()
 
-import pandas as pd
 
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import send_file
 import matplotlib.pyplot as plt
 from pymorphy2 import MorphAnalyzer
 
@@ -69,19 +69,19 @@ def search():
             query = """
             SELECT text_22
             FROM Anek22
-            WHERE pril_22 = 0 
+            WHERE pril_22 = 0
             """
             df0 = pd.read_sql_query(query, con=conn)
             query1 = """
             SELECT text
             FROM Anek11
-            WHERE pril = 0 
+            WHERE pril = 0
             """
             df1 = pd.read_sql_query(query1, con=conn)
             query2 = """
             SELECT text_n
             FROM Nikulin
-            WHERE pril_n = 0 
+            WHERE pril_n = 0
             """
             df2 = pd.read_sql_query(query2, con=conn)
             data = [df0, df1, df2]
@@ -96,7 +96,7 @@ def search():
         else:
             query = """
             SELECT text_22
-            FROM Anek22 
+            FROM Anek22
             """
             df0 = pd.read_sql_query(query, con=conn)
             query1 = """
@@ -112,7 +112,6 @@ def search():
             data = [df0, df1, df2]
             df = pd.concat(data)
             final = []
-            be = list(df["text_22"])[:10]
             r = ["text_22", "text_n", "text"]
             for j in r:
                 for q in list(df[j]):
@@ -125,13 +124,15 @@ def search():
                                     ""))
         if len(final) == 0:
             final = "К сожалению, анекдотов с этим персонажем нет, попробуйте найти другого"
-        with open("anek.txt", "w", encoding='utf8') as file:
+        with open("/home/MaryObridko/flask/anek.txt", "w", encoding='utf8') as file:
             if type(final) != str:
                 for i in final:
                     file.write(str(i))
+                    file.write("______________________________________________")
                     file.write("\n")
             else:
                 file.write(final)
+                file.write("______________________________________________")
         return render_template("Anek2.html", anek=final)
     except KeyError:
         return render_template("Anek4.html")
@@ -139,13 +140,13 @@ def search():
 
 @app.route('/stat')
 def stats():
-    with open("stat.txt", 'r+', encoding='utf8') as f:
+    with open("/home/MaryObridko/flask/stat.txt", 'r+', encoding='utf8') as f:
         p = f.readlines()
         pri = p[::2]
         names = p[1::2]
     ann = ""
     if pri.count("Все анекдоты\n") > pri.count("Только приличные\n"):
-        ann = "Все анекдоты"
+        ann = "все анекдоты"
     elif pri.count("Только приличные\n") > pri.count("Все анекдоты\n"):
         ann = "только приличные"
     else:
@@ -154,7 +155,8 @@ def stats():
     plt.figure(figsize=(6, 8))
     df['pril'].value_counts().plot(kind='pie')
     plt.title('Выбор всех анекдотов или только приличных')
-    plt.savefig("/home/MaryObridko/mysite/flask/static/pril.jpg")
+    plt.savefig("static/pril.jpg")
+    # картинка для персонажей
     na = []
     for i in names:
         na.extend(i.split())
@@ -165,14 +167,21 @@ def stats():
         else:
             pers[i] +=1
     leute = list(sorted(pers.keys(), key=lambda j: pers[j], reverse=True))
-    df = pd.DataFrame({'leute': leute[-5:]})
-    plt.figure(figsize=(6, 8))
-    df['leute'].value_counts().plot.bar(color='darkorange')
+    num = []
+    for i in leute[:5]:
+        num.append(pers[i])
+    plt.figure(figsize=(6, 6))
+    plt.bar(leute[:5], num, color='darkorange')
     plt.title('5 самых популярных персонажей')
     plt.xlabel('Самые популярные персонажи')
     plt.ylabel('Количество запросов')
-    plt.savefig("/home/MaryObridko/mysite/flask/static/leute.jpg")
+    plt.savefig("static/leute.jpg")
     return render_template("Anek3.html", pop=leute[0], lox=leute[-1], ane=ann)
+
+@app.route('/return-files/')
+def return_files_tut():
+		return send_file('/home/MaryObridko/flask/anek.txt', as_attachment=True)
+
 
 
 if __name__ == '__main__':
